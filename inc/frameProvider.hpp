@@ -12,6 +12,7 @@
 
 
 #include "BenchmarkDatasetReader.h"
+using namespace cv;
 
 class FrameProvider
 {
