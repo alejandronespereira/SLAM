@@ -1,8 +1,18 @@
 
 #include <iostream>
 
+#include <locale.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
+
+#include "opencv2/opencv.hpp"
+#include "BenchmarkDatasetReader.h"
+
 int main()
 {
-  std::cout << "Hello World!" << std::endl;
-  return 0;
+  setlocale(LC_ALL, "C");
+
 }
