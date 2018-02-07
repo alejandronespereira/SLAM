@@ -1,4 +1,0 @@
-/home/alejandro/dev/SLAM/CMakeFiles/edit_cache.dir
-/home/alejandro/dev/SLAM/CMakeFiles/rebuild_cache.dir
-/home/alejandro/dev/SLAM/CMakeFiles/SLAM.dir
-/home/alejandro/dev/SLAM/CMakeFiles/slam_libs.dir
