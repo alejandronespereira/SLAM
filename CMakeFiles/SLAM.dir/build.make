@@ -90,6 +90,8 @@ SLAM_EXTERNAL_OBJECTS =
 
 bin/SLAM: CMakeFiles/SLAM.dir/src/slam.cpp.o
 bin/SLAM: CMakeFiles/SLAM.dir/build.make
+bin/SLAM: lib/libslam_libs.a
+bin/SLAM: /usr/local/lib/libzip.so
 bin/SLAM: /usr/local/lib/libopencv_xphoto.so.3.1.0
 bin/SLAM: /usr/local/lib/libopencv_xobjdetect.so.3.1.0
 bin/SLAM: /usr/local/lib/libopencv_tracking.so.3.1.0

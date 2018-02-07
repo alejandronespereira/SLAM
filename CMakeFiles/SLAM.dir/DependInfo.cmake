@@ -10,12 +10,17 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include/opencv"
+  "inc"
+  "src"
+  "thirdparty/tum_reader/src"
+  "/usr/include/eigen3"
   "/usr/local/include"
+  "/usr/local/include/opencv"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/alejandro/dev/SLAM/CMakeFiles/slam_libs.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

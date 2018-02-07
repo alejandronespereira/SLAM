@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG  -std=c++0x
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/local/include/opencv -isystem /usr/local/include 
+CXX_INCLUDES = -I/home/alejandro/dev/SLAM/inc -I/home/alejandro/dev/SLAM/src -I/home/alejandro/dev/SLAM/thirdparty/tum_reader/src -I/usr/include/eigen3 -isystem /usr/local/include -isystem /usr/local/include/opencv 
 

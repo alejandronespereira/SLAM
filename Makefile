@@ -123,6 +123,46 @@ SLAM/fast:
 	$(MAKE) -f CMakeFiles/SLAM.dir/build.make CMakeFiles/SLAM.dir/build
 .PHONY : SLAM/fast
 
+#=============================================================================
+# Target rules for targets named slam_libs
+
+# Build rule for target.
+slam_libs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 slam_libs
+.PHONY : slam_libs
+
+# fast build rule for target.
+slam_libs/fast:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/build
+.PHONY : slam_libs/fast
+
+src/frameProvider.o: src/frameProvider.cpp.o
+
+.PHONY : src/frameProvider.o
+
+# target to build an object file
+src/frameProvider.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/frameProvider.cpp.o
+.PHONY : src/frameProvider.cpp.o
+
+src/frameProvider.i: src/frameProvider.cpp.i
+
+.PHONY : src/frameProvider.i
+
+# target to preprocess a source file
+src/frameProvider.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/frameProvider.cpp.i
+.PHONY : src/frameProvider.cpp.i
+
+src/frameProvider.s: src/frameProvider.cpp.s
+
+.PHONY : src/frameProvider.s
+
+# target to generate assembly for a file
+src/frameProvider.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/frameProvider.cpp.s
+.PHONY : src/frameProvider.cpp.s
+
 src/slam.o: src/slam.cpp.o
 
 .PHONY : src/slam.o
@@ -150,6 +190,60 @@ src/slam.cpp.s:
 	$(MAKE) -f CMakeFiles/SLAM.dir/build.make CMakeFiles/SLAM.dir/src/slam.cpp.s
 .PHONY : src/slam.cpp.s
 
+thirdparty/tum_reader/src/FOVUndistorter.o: thirdparty/tum_reader/src/FOVUndistorter.cpp.o
+
+.PHONY : thirdparty/tum_reader/src/FOVUndistorter.o
+
+# target to build an object file
+thirdparty/tum_reader/src/FOVUndistorter.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/thirdparty/tum_reader/src/FOVUndistorter.cpp.o
+.PHONY : thirdparty/tum_reader/src/FOVUndistorter.cpp.o
+
+thirdparty/tum_reader/src/FOVUndistorter.i: thirdparty/tum_reader/src/FOVUndistorter.cpp.i
+
+.PHONY : thirdparty/tum_reader/src/FOVUndistorter.i
+
+# target to preprocess a source file
+thirdparty/tum_reader/src/FOVUndistorter.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/thirdparty/tum_reader/src/FOVUndistorter.cpp.i
+.PHONY : thirdparty/tum_reader/src/FOVUndistorter.cpp.i
+
+thirdparty/tum_reader/src/FOVUndistorter.s: thirdparty/tum_reader/src/FOVUndistorter.cpp.s
+
+.PHONY : thirdparty/tum_reader/src/FOVUndistorter.s
+
+# target to generate assembly for a file
+thirdparty/tum_reader/src/FOVUndistorter.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/thirdparty/tum_reader/src/FOVUndistorter.cpp.s
+.PHONY : thirdparty/tum_reader/src/FOVUndistorter.cpp.s
+
+thirdparty/tum_reader/src/PhotometricUndistorter.o: thirdparty/tum_reader/src/PhotometricUndistorter.cpp.o
+
+.PHONY : thirdparty/tum_reader/src/PhotometricUndistorter.o
+
+# target to build an object file
+thirdparty/tum_reader/src/PhotometricUndistorter.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/thirdparty/tum_reader/src/PhotometricUndistorter.cpp.o
+.PHONY : thirdparty/tum_reader/src/PhotometricUndistorter.cpp.o
+
+thirdparty/tum_reader/src/PhotometricUndistorter.i: thirdparty/tum_reader/src/PhotometricUndistorter.cpp.i
+
+.PHONY : thirdparty/tum_reader/src/PhotometricUndistorter.i
+
+# target to preprocess a source file
+thirdparty/tum_reader/src/PhotometricUndistorter.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/thirdparty/tum_reader/src/PhotometricUndistorter.cpp.i
+.PHONY : thirdparty/tum_reader/src/PhotometricUndistorter.cpp.i
+
+thirdparty/tum_reader/src/PhotometricUndistorter.s: thirdparty/tum_reader/src/PhotometricUndistorter.cpp.s
+
+.PHONY : thirdparty/tum_reader/src/PhotometricUndistorter.s
+
+# target to generate assembly for a file
+thirdparty/tum_reader/src/PhotometricUndistorter.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/thirdparty/tum_reader/src/PhotometricUndistorter.cpp.s
+.PHONY : thirdparty/tum_reader/src/PhotometricUndistorter.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +253,19 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SLAM"
+	@echo "... slam_libs"
+	@echo "... src/frameProvider.o"
+	@echo "... src/frameProvider.i"
+	@echo "... src/frameProvider.s"
 	@echo "... src/slam.o"
 	@echo "... src/slam.i"
 	@echo "... src/slam.s"
+	@echo "... thirdparty/tum_reader/src/FOVUndistorter.o"
+	@echo "... thirdparty/tum_reader/src/FOVUndistorter.i"
+	@echo "... thirdparty/tum_reader/src/FOVUndistorter.s"
+	@echo "... thirdparty/tum_reader/src/PhotometricUndistorter.o"
+	@echo "... thirdparty/tum_reader/src/PhotometricUndistorter.i"
+	@echo "... thirdparty/tum_reader/src/PhotometricUndistorter.s"
 .PHONY : help
 
 
