@@ -43,7 +43,7 @@ FrameProvider::FrameProvider(std::string folder)
   */
 }
 
-void FrameProvider::getFrame(int frameIndex, frameData& frame)
+void FrameProvider::getFrame(int frameIndex, FrameData& frame)
 {
   ExposureImage* exposureImage;
   exposureImage = reader->getImage(frameIndex, rectify,gamma,vignette,overExposure);

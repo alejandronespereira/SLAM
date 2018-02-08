@@ -14,14 +14,15 @@
 
 #include "BenchmarkDatasetReader.h"
 
-#include "frameData.hpp"
+#include "FrameData.hpp"
+
 using namespace cv;
 using namespace cv::xfeatures2d;
 class FrameProvider
 {
   public:
     FrameProvider(std::string folder);
-    void getFrame(int frameIndex, frameData& frame);
+    void getFrame(int frameIndex, FrameData& frame);
 
   private:
     DatasetReader* reader;

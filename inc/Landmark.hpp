@@ -1,5 +1,5 @@
-#ifndef FRAMEDATA
-#define FRAMEDATA
+#ifndef LANDMARK
+#define LANDMARK
 
 #include "opencv2/core.hpp"
 #include "opencv2/features2d.hpp"
@@ -8,7 +8,7 @@
 
 using namespace cv;
 
-struct frameData
+struct Landmark
 {
   std::vector<KeyPoint> keyPoints;
   Mat descriptors;

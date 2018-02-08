@@ -10,7 +10,7 @@
 
 #include "opencv2/opencv.hpp"
 #include "frameProvider.hpp"
-#include "frameData.hpp"
+#include "FrameData.hpp"
 
 using namespace cv;
 
@@ -21,7 +21,7 @@ int main( int argc, char** argv )
 
 
   FrameProvider* provider = new FrameProvider(dataset);
-  frameData frame;
+  FrameData frame;
   provider->getFrame(25,frame);
 
   Mat _temp;
