@@ -9,16 +9,27 @@
 
 
 #include "opencv2/opencv.hpp"
-//#include "../thirdparty/tum_reader/src/BenchmarkDatasetReader.h"
 #include "frameProvider.hpp"
+#include "frameData.hpp"
+
+using namespace cv;
 
 int main( int argc, char** argv )
 {
   setlocale(LC_ALL, "C");
   std::string dataset = argv[1];
 
-  FrameProvider* provider = new FrameProvider(dataset);
 
+  FrameProvider* provider = new FrameProvider(dataset);
+  frameData frame;
+  provider->getFrame(25,frame);
+
+  Mat _temp;
+  _temp = frame.image * 255;
+  _temp.convertTo(_temp,CV_8U);
+  drawKeypoints(_temp,frame.keyPoints,_temp,Scalar(0,255,0));
+  imshow("Image",_temp);
+  waitKey(0);
 
 
 
