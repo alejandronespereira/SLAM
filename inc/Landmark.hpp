@@ -10,10 +10,10 @@ using namespace cv;
 
 struct Landmark
 {
-  std::vector<KeyPoint> keyPoints;
-  Mat descriptors;
-  Mat image;
-  double timestamp;
+  std::vector < int > framesPresent;
+  std::vector < Point > positions;
+  int count;
+  //Point3 worldCoordinates;
 };
 
 #endif
