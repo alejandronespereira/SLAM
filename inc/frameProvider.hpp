@@ -15,6 +15,7 @@
 #include "BenchmarkDatasetReader.h"
 
 #include "FrameData.hpp"
+#include "definitions.hpp"
 
 using namespace cv;
 using namespace cv::xfeatures2d;
@@ -25,11 +26,11 @@ class FrameProvider
     void getFrame(int frameIndex, FrameData& frame);
 
   private:
-    DatasetReader* reader;
-    bool rectify;
-    bool gamma;
-    bool vignette;
-    bool overExposure;
-    double timestamp;
+    DatasetReader* _reader;
+    bool _rectify;
+    bool _gamma;
+    bool _vignette;
+    bool _overExposure;
+    double _timestamp;
 };
 #endif

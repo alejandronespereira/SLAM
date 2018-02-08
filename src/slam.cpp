@@ -11,6 +11,7 @@
 #include "opencv2/opencv.hpp"
 #include "frameProvider.hpp"
 #include "FrameData.hpp"
+#include "landmarksManager.hpp"
 
 using namespace cv;
 
@@ -23,7 +24,7 @@ int main( int argc, char** argv )
   FrameProvider* provider = new FrameProvider(dataset);
   FrameData frame;
   provider->getFrame(25,frame);
-
+  std::cout << frame.descriptors.size() << std::endl;
   Mat _temp;
   _temp = frame.image * 255;
   _temp.convertTo(_temp,CV_8U);
