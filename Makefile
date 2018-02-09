@@ -163,6 +163,33 @@ src/frameProvider.cpp.s:
 	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/frameProvider.cpp.s
 .PHONY : src/frameProvider.cpp.s
 
+src/landmarksManager.o: src/landmarksManager.cpp.o
+
+.PHONY : src/landmarksManager.o
+
+# target to build an object file
+src/landmarksManager.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/landmarksManager.cpp.o
+.PHONY : src/landmarksManager.cpp.o
+
+src/landmarksManager.i: src/landmarksManager.cpp.i
+
+.PHONY : src/landmarksManager.i
+
+# target to preprocess a source file
+src/landmarksManager.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/landmarksManager.cpp.i
+.PHONY : src/landmarksManager.cpp.i
+
+src/landmarksManager.s: src/landmarksManager.cpp.s
+
+.PHONY : src/landmarksManager.s
+
+# target to generate assembly for a file
+src/landmarksManager.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/landmarksManager.cpp.s
+.PHONY : src/landmarksManager.cpp.s
+
 src/slam.o: src/slam.cpp.o
 
 .PHONY : src/slam.o
@@ -257,6 +284,9 @@ help:
 	@echo "... src/frameProvider.o"
 	@echo "... src/frameProvider.i"
 	@echo "... src/frameProvider.s"
+	@echo "... src/landmarksManager.o"
+	@echo "... src/landmarksManager.i"
+	@echo "... src/landmarksManager.s"
 	@echo "... src/slam.o"
 	@echo "... src/slam.i"
 	@echo "... src/slam.s"

@@ -6,13 +6,15 @@
 #include "opencv2/xfeatures2d.hpp"
 #include <vector>
 
+#include "definitions.hpp"
+
 using namespace cv;
 
 struct Landmark
 {
   std::vector < int > framesPresent;
-  std::vector < Point > positions;
-  std::vector < Mat > descriptor;
+  std::vector < Point2f > positions;
+  Mat descriptor;
   int count;
   //Point3 worldCoordinates;
 };

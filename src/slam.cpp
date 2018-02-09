@@ -20,10 +20,17 @@ int main( int argc, char** argv )
   setlocale(LC_ALL, "C");
   std::string dataset = argv[1];
 
-
   FrameProvider* provider = new FrameProvider(dataset);
   FrameData frame;
+
+  LandmarksManager* landmarksManager = new LandmarksManager();
+
   provider->getFrame(25,frame);
+  landmarks _test;
+  landmarksManager->createNewLandmarks(0,frame,_test);
+
+  print(_test[0].descriptor << "|" << frame.descriptors.row(0));
+
   std::cout << frame.descriptors.size() << std::endl;
   Mat _temp;
   _temp = frame.image * 255;
