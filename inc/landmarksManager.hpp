@@ -14,6 +14,7 @@
 
 #include "FrameData.hpp"
 #include "definitions.hpp"
+#include "debugging.hpp"
 
 using namespace cv;
 using namespace cv::xfeatures2d;
@@ -24,13 +25,15 @@ class LandmarksManager
     LandmarksManager(Ptr<DescriptorMatcher> matcher);
     LandmarksManager();
     void addLandmarks(landmarks& newLandmarks);
-    void compareLandmarks(landmarks& newLandmarks, landmarks& matchingLandmarks);
+    std::vector<int> compareLandmarks(landmarks& newLandmarks, std::vector<int>& found);
     void createNewLandmarks(int frameID, FrameData& frame, landmarks& newLandmarks);
 
   private:
     landmarks _landmarks;
     Ptr<DescriptorMatcher> _matcher;
     Mat _descriptors;
+
+    void computeDescriptors(landmarks& landmarksToCompute, Mat& descriptors);
 
 };
 #endif

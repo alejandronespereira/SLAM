@@ -159,7 +159,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=DSO
+CMAKE_PROJECT_NAME:STATIC=SLAM
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib

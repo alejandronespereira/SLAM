@@ -136,6 +136,33 @@ slam_libs/fast:
 	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/build
 .PHONY : slam_libs/fast
 
+src/debugging.o: src/debugging.cpp.o
+
+.PHONY : src/debugging.o
+
+# target to build an object file
+src/debugging.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/debugging.cpp.o
+.PHONY : src/debugging.cpp.o
+
+src/debugging.i: src/debugging.cpp.i
+
+.PHONY : src/debugging.i
+
+# target to preprocess a source file
+src/debugging.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/debugging.cpp.i
+.PHONY : src/debugging.cpp.i
+
+src/debugging.s: src/debugging.cpp.s
+
+.PHONY : src/debugging.s
+
+# target to generate assembly for a file
+src/debugging.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/debugging.cpp.s
+.PHONY : src/debugging.cpp.s
+
 src/frameProvider.o: src/frameProvider.cpp.o
 
 .PHONY : src/frameProvider.o
@@ -281,6 +308,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... SLAM"
 	@echo "... slam_libs"
+	@echo "... src/debugging.o"
+	@echo "... src/debugging.i"
+	@echo "... src/debugging.s"
 	@echo "... src/frameProvider.o"
 	@echo "... src/frameProvider.i"
 	@echo "... src/frameProvider.s"

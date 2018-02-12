@@ -16,6 +16,7 @@
 
 #include "FrameData.hpp"
 #include "definitions.hpp"
+#include "debugging.hpp"
 
 using namespace cv;
 using namespace cv::xfeatures2d;

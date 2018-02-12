@@ -6,8 +6,8 @@ FrameProvider::FrameProvider(std::string folder)
   int nImages =  _reader->getNumImages();
   _rectify = true;
   _gamma = true;
-  _vignette = true;
-  _overExposure = true;
+  _vignette = false;
+  _overExposure = false;
 
 }
 
@@ -19,7 +19,9 @@ void FrameProvider::getFrame(int frameIndex, FrameData& frame)
   Mat temp[] = {image,image,image};
   merge(temp,3,image);
 
-  Mat desc,gray;
+  Mat1f desc;
+
+  Mat gray;
   keyPoints kp;
   int minHessian = 400;
 

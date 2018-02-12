@@ -1,4 +1,4 @@
-SET(PROJECT_NAME DSO)
+SET(PROJECT_NAME SLAM)
 
 PROJECT(${PROJECT_NAME})
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
@@ -34,6 +34,7 @@ include_directories(
 set(slam_SOURCE_FILES
   ${PROJECT_SOURCE_DIR}/src/frameProvider.cpp
   ${PROJECT_SOURCE_DIR}/src/landmarksManager.cpp
+  ${PROJECT_SOURCE_DIR}/src/debugging.cpp
   ${PROJECT_SOURCE_DIR}/thirdparty/tum_reader/src/FOVUndistorter.cpp
   ${PROJECT_SOURCE_DIR}/thirdparty/tum_reader/src/PhotometricUndistorter.cpp
 )

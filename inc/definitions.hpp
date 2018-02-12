@@ -12,5 +12,7 @@
 
 typedef std::vector< cv::KeyPoint> keyPoints;
 typedef std::vector< Landmark > landmarks;
+//std::vector<int> matches;
+
 
 #endif
