@@ -24,7 +24,6 @@ class LandmarksManager
   public:
     LandmarksManager(Ptr<DescriptorMatcher> matcher);
     LandmarksManager();
-    void addLandmarks(landmarks& newLandmarks);
     std::vector<int> compareLandmarks(landmarks& newLandmarks, std::vector<int>& found);
     void createNewLandmarks(int frameID, FrameData& frame, landmarks& newLandmarks);
 

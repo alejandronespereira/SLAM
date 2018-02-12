@@ -20,18 +20,60 @@ int main( int argc, char** argv )
   setlocale(LC_ALL, "C");
   std::string dataset = argv[1];
 
-  FrameProvider* provider = new FrameProvider(dataset);
-  FrameData frame,frame2;
+  Ptr<ORB> orb = ORB::create();
+  orb->setMaxFeatures(500);
+  Ptr<SURF> surf = SURF::create();
+  Ptr<AKAZE> akaze = AKAZE::create();
+  FrameProvider* provider = new FrameProvider(dataset,akaze);
+  FrameData frame;
   //Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create("BruteForce");
-  BFMatcher* matcher = new BFMatcher(NORM_L2,true);
-  LandmarksManager* landmarksManager = new LandmarksManager(matcher);
+  //BFMatcher* matcher = new BFMatcher(NORM_L2,true);
 
+  //FlannBasedMatcher* matcher;
+  Ptr<DescriptorMatcher> BF = DescriptorMatcher::create("BruteForce-Hamming");
+  Ptr<DescriptorMatcher> FLANN = DescriptorMatcher::create("FlannBased");
+  LandmarksManager* landmarksManager = new LandmarksManager(BF);
+
+  for (int i = 0; i < provider->nImages; i ++)
+  {
+    landmarks _landmarks;
+    provider->getFrame(i,frame);
+    landmarksManager->createNewLandmarks(i,frame,_landmarks);
+    std::vector < int > found, notFound;
+    notFound = landmarksManager->compareLandmarks(_landmarks,found);
+
+    keyPoints keyPointsFound, keyPointsNotFound;
+
+    for(auto el:found)
+    {
+      keyPointsFound.push_back(frame.keyPoints[el]);
+    }
+
+    for(auto el:notFound)
+    {
+      keyPointsNotFound.push_back(frame.keyPoints[el]);
+    }
+
+
+    Mat _display;
+    _display = frame.image * 255;
+    _display.convertTo(_display,CV_8U);
+
+    drawKeypoints(_display,keyPointsFound,_display,Scalar(0,255,0));
+    drawKeypoints(_display,keyPointsNotFound,_display,Scalar(0,0,255));
+
+    imshow("image",_display);
+    waitKey(1);
+  }
+}
+
+/*
   provider->getFrame(25,frame);
   provider->getFrame(26,frame2);
   landmarks _test,_test2;
   landmarksManager->createNewLandmarks(25,frame,_test);
   landmarksManager->createNewLandmarks(41,frame2,_test2);
-  std::vector < int > found, notFound;
+
   notFound = landmarksManager->compareLandmarks(_test,found);
   notFound = landmarksManager->compareLandmarks(_test2,found);
   Mat _temp, _temp2;
@@ -63,3 +105,4 @@ int main( int argc, char** argv )
   imshow("second frame",_temp2);
   waitKey(0);
 }
+*/

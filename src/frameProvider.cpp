@@ -1,14 +1,14 @@
 #include "../inc/frameProvider.hpp"
 
-FrameProvider::FrameProvider(std::string folder)
+FrameProvider::FrameProvider(std::string folder,Ptr<Feature2D> detector)
 {
   _reader = new DatasetReader(folder);
-  int nImages =  _reader->getNumImages();
+  nImages =  _reader->getNumImages();
   _rectify = true;
   _gamma = true;
   _vignette = false;
   _overExposure = false;
-
+  _detector = detector;
 }
 
 void FrameProvider::getFrame(int frameIndex, FrameData& frame)
@@ -23,14 +23,12 @@ void FrameProvider::getFrame(int frameIndex, FrameData& frame)
 
   Mat gray;
   keyPoints kp;
-  int minHessian = 400;
 
-  Ptr<SURF> detector = SURF::create( minHessian );
   Mat _temp;
   _temp = image * 255;
   _temp.convertTo(gray,CV_8U);
+  _detector->detectAndCompute( gray, noArray(),kp,desc);
 
-  detector->detectAndCompute( gray, noArray(),kp,desc);
   frame.image = image;
   frame.keyPoints = kp;
   frame.descriptors = desc;

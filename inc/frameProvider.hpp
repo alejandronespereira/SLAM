@@ -24,9 +24,11 @@ class FrameProvider
 {
   public:
     FrameProvider(std::string folder);
+    FrameProvider(std::string folder,Ptr<Feature2D> _detector);
     void getFrame(int frameIndex, FrameData& frame);
-
+    int nImages;
   private:
+    Ptr<Feature2D> _detector;
     DatasetReader* _reader;
     bool _rectify;
     bool _gamma;

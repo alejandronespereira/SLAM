@@ -8,16 +8,6 @@ LandmarksManager::LandmarksManager()
 {
 }
 
-
-void LandmarksManager::addLandmarks(landmarks& newLandmarks)
-{
-  _landmarks.insert( _landmarks.end(), newLandmarks.begin(), newLandmarks.end() );
-  for (int i = 0; i < newLandmarks.size(); i++)
-  {
-
-  }
-}
-
 std::vector<int> LandmarksManager::compareLandmarks(landmarks& newLandmarks, std::vector<int>& found)
 {
   if(_landmarks.size() == 0)
@@ -32,6 +22,7 @@ std::vector<int> LandmarksManager::compareLandmarks(landmarks& newLandmarks, std
   Mat newDescriptors;
   computeDescriptors(newLandmarks,newDescriptors);
   std::vector<DMatch> matches;
+
   _matcher->match(newDescriptors,_descriptors, matches);
 
   // Update landmarks
@@ -43,20 +34,20 @@ std::vector<int> LandmarksManager::compareLandmarks(landmarks& newLandmarks, std
     _landmarks[matches[m].trainIdx].count++;
     _landmarks[matches[m].trainIdx].positions.push_back(newLandmarks[matches[m].queryIdx].positions[0]);
   }
+  print(found.size() << "/" << _landmarks.size());
   // Add new landmarks
-  std::vector<int> v(newLandmarks.size());
-  std::iota ( std::begin(v),std::end(v),0);
-
   std::vector<int> notFound;
-  std::remove_copy_if(v.begin(), v.end(), std::back_inserter(notFound),
+  std::remove_copy_if(found.begin(), found.end(), std::back_inserter(notFound),
      [&found](const int& arg)
      { return (std::find(found.begin(), found.end(), arg) != found.end());});
   landmarks landmarksToAdd;
   for(auto el : notFound)
   {
+    print("Adding a landmark???");
     _landmarks.push_back(newLandmarks[el]);
     vconcat(newLandmarks[el].descriptor, _descriptors, _descriptors);
   }
+
   return notFound;
 }
 
