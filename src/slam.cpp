@@ -30,7 +30,8 @@ int main( int argc, char** argv )
   //BFMatcher* matcher = new BFMatcher(NORM_L2,true);
 
   //FlannBasedMatcher* matcher;
-  Ptr<DescriptorMatcher> BF = DescriptorMatcher::create("BruteForce-Hamming");
+  //Ptr<DescriptorMatcher> BF = DescriptorMatcher::create("BruteForce-Hamming");
+  BFMatcher* BF = new BFMatcher(NORM_L2,true);
   Ptr<DescriptorMatcher> FLANN = DescriptorMatcher::create("FlannBased");
   LandmarksManager* landmarksManager = new LandmarksManager(BF);
 
