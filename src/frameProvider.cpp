@@ -3,6 +3,7 @@
 FrameProvider::FrameProvider(std::string folder,Ptr<Feature2D> detector)
 {
   _reader = new DatasetReader(folder);
+  K = _reader->getUndistorter()->getK_rect();
   nImages =  _reader->getNumImages();
   _rectify = true;
   _gamma = true;

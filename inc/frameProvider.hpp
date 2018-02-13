@@ -27,9 +27,10 @@ class FrameProvider
     FrameProvider(std::string folder,Ptr<Feature2D> _detector);
     void getFrame(int frameIndex, FrameData& frame);
     int nImages;
+    Eigen::Matrix3f K;
   private:
-    Ptr<Feature2D> _detector;
     DatasetReader* _reader;
+    Ptr<Feature2D> _detector;
     bool _rectify;
     bool _gamma;
     bool _vignette;

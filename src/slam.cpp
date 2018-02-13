@@ -12,7 +12,7 @@
 #include "frameProvider.hpp"
 #include "FrameData.hpp"
 #include "landmarksManager.hpp"
-
+#include "visualization.hpp"
 using namespace cv;
 
 int main( int argc, char** argv )
@@ -25,6 +25,7 @@ int main( int argc, char** argv )
   Ptr<SURF> surf = SURF::create();
   Ptr<AKAZE> akaze = AKAZE::create();
   FrameProvider* provider = new FrameProvider(dataset,akaze);
+  Visualization* viewer = new Visualization("test",provider->K);
   FrameData frame;
   //Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create("BruteForce");
   //BFMatcher* matcher = new BFMatcher(NORM_L2,true);
@@ -42,6 +43,7 @@ int main( int argc, char** argv )
     landmarksManager->createNewLandmarks(i,frame,_landmarks);
     std::vector < int > found, notFound;
     notFound = landmarksManager->compareLandmarks(_landmarks,found);
+    /*
 
     keyPoints keyPointsFound, keyPointsNotFound;
 
@@ -55,7 +57,6 @@ int main( int argc, char** argv )
       keyPointsNotFound.push_back(frame.keyPoints[el]);
     }
 
-
     Mat _display;
     _display = frame.image * 255;
     _display.convertTo(_display,CV_8U);
@@ -64,7 +65,7 @@ int main( int argc, char** argv )
     drawKeypoints(_display,keyPointsNotFound,_display,Scalar(0,0,255));
 
     imshow("image",_display);
-    waitKey(1);
+    waitKey(1);*/
   }
 }
 
