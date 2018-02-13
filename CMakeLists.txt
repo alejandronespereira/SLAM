@@ -34,6 +34,7 @@ include_directories(
 set(slam_SOURCE_FILES
   ${PROJECT_SOURCE_DIR}/src/frameProvider.cpp
   ${PROJECT_SOURCE_DIR}/src/landmarksManager.cpp
+  ${PROJECT_SOURCE_DIR}/src/visualization.cpp
   ${PROJECT_SOURCE_DIR}/src/debugging.cpp
   ${PROJECT_SOURCE_DIR}/thirdparty/tum_reader/src/FOVUndistorter.cpp
   ${PROJECT_SOURCE_DIR}/thirdparty/tum_reader/src/PhotometricUndistorter.cpp

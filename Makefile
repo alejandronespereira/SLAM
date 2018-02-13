@@ -244,6 +244,33 @@ src/slam.cpp.s:
 	$(MAKE) -f CMakeFiles/SLAM.dir/build.make CMakeFiles/SLAM.dir/src/slam.cpp.s
 .PHONY : src/slam.cpp.s
 
+src/visualization.o: src/visualization.cpp.o
+
+.PHONY : src/visualization.o
+
+# target to build an object file
+src/visualization.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/visualization.cpp.o
+.PHONY : src/visualization.cpp.o
+
+src/visualization.i: src/visualization.cpp.i
+
+.PHONY : src/visualization.i
+
+# target to preprocess a source file
+src/visualization.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/visualization.cpp.i
+.PHONY : src/visualization.cpp.i
+
+src/visualization.s: src/visualization.cpp.s
+
+.PHONY : src/visualization.s
+
+# target to generate assembly for a file
+src/visualization.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/visualization.cpp.s
+.PHONY : src/visualization.cpp.s
+
 thirdparty/tum_reader/src/FOVUndistorter.o: thirdparty/tum_reader/src/FOVUndistorter.cpp.o
 
 .PHONY : thirdparty/tum_reader/src/FOVUndistorter.o
@@ -320,6 +347,9 @@ help:
 	@echo "... src/slam.o"
 	@echo "... src/slam.i"
 	@echo "... src/slam.s"
+	@echo "... src/visualization.o"
+	@echo "... src/visualization.i"
+	@echo "... src/visualization.s"
 	@echo "... thirdparty/tum_reader/src/FOVUndistorter.o"
 	@echo "... thirdparty/tum_reader/src/FOVUndistorter.i"
 	@echo "... thirdparty/tum_reader/src/FOVUndistorter.s"
