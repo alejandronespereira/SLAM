@@ -11,6 +11,7 @@
 #include "opencv2/core.hpp"
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
+#include "Eigen/Core"
 
 #include "BenchmarkDatasetReader.h"
 
@@ -25,7 +26,7 @@ class FrameProvider
   public:
     FrameProvider(std::string folder);
     FrameProvider(std::string folder,Ptr<Feature2D> _detector);
-    void getFrame(int frameIndex, FrameData& frame);
+    void getFrame(int frameID, FrameData& frame);
     int nImages;
     Eigen::Matrix3f K;
   private:

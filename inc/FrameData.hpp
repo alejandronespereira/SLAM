@@ -10,10 +10,13 @@ using namespace cv;
 
 struct FrameData
 {
+  int frameID;
   std::vector<KeyPoint> keyPoints;
   Mat descriptors;
   Mat image;
   double timestamp;
+  Matx33d K;
+  std::vector< int > validKeyPoints;
 };
 
 #endif

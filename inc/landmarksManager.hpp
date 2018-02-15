@@ -11,7 +11,7 @@
 #include "opencv2/core.hpp"
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
-
+#include "Eigen/Core"
 #include "FrameData.hpp"
 #include "definitions.hpp"
 #include "debugging.hpp"
@@ -22,17 +22,18 @@ using namespace cv::xfeatures2d;
 class LandmarksManager
 {
   public:
-    LandmarksManager(Ptr<DescriptorMatcher> matcher);
     LandmarksManager();
-    std::vector<int> compareLandmarks(landmarks& newLandmarks, std::vector<int>& found);
-    void createNewLandmarks(int frameID, FrameData& frame, landmarks& newLandmarks);
+    LandmarksManager(Ptr<DescriptorMatcher> matcher);
+    std::vector<int> compareLandmarks(Landmarks& newLandmarks, std::vector<int>& found);
+    void createNewLandmarks(int frameID, FrameData& frame, Landmarks& newLandmarks);
 
   private:
-    landmarks _landmarks;
+    Landmarks _landmarks;
     Ptr<DescriptorMatcher> _matcher;
     Mat _descriptors;
-
-    void computeDescriptors(landmarks& landmarksToCompute, Mat& descriptors);
+    double _focal;
+    Point2d pp;
+    void computeDescriptors(Landmarks& landmarksToCompute, Mat& descriptors);
 
 };
 #endif

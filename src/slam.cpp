@@ -12,7 +12,8 @@
 #include "frameProvider.hpp"
 #include "FrameData.hpp"
 #include "landmarksManager.hpp"
-#include "visualization.hpp"
+#include "tracking.hpp"
+
 using namespace cv;
 
 int main( int argc, char** argv )
@@ -25,8 +26,8 @@ int main( int argc, char** argv )
   Ptr<SURF> surf = SURF::create();
   Ptr<AKAZE> akaze = AKAZE::create();
   FrameProvider* provider = new FrameProvider(dataset,akaze);
-  Visualization* viewer = new Visualization("test",provider->K);
-  FrameData frame;
+  FrameData frame1, frame2;
+
   //Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create("BruteForce");
   //BFMatcher* matcher = new BFMatcher(NORM_L2,true);
 
@@ -35,14 +36,42 @@ int main( int argc, char** argv )
   BFMatcher* BF = new BFMatcher(NORM_L2,true);
   Ptr<DescriptorMatcher> FLANN = DescriptorMatcher::create("FlannBased");
   LandmarksManager* landmarksManager = new LandmarksManager(BF);
+  Tracking* tracking = new Tracking(BF);
+
+  cv::Mat positionMap(Size(500,500),CV_8U);
+
+  double posX = 250.0;
+  double posY = 250.0;
 
   for (int i = 0; i < provider->nImages; i ++)
   {
-    landmarks _landmarks;
-    provider->getFrame(i,frame);
-    landmarksManager->createNewLandmarks(i,frame,_landmarks);
-    std::vector < int > found, notFound;
-    notFound = landmarksManager->compareLandmarks(_landmarks,found);
+    Mat t;
+    Landmarks _landmarks;
+    if (i != 0)
+    {
+      frame2 = frame1;
+    }
+    provider->getFrame(i,frame1);
+
+    if (i != 0)
+    {
+      t = tracking->trackFrames(frame1,frame2);
+      float tx = t.at<double>(0);
+      float ty = t.at<double>(1);
+      float tz = t.at<double>(2);
+
+      //print("("<< tx << "," << ty << "," << ty << ")");
+      posX += tx;
+      posY += tz;
+    }
+
+    //positionMap.at<int>(int(posX),int(posY)) = 255;
+    imshow("Map",positionMap);
+    waitKey(1);
+
+    //landmarksManager->createNewLandmarks(i,frame,_landmarks);
+    //std::vector < int > found, notFound;
+    //notFound = landmarksManager->compareLandmarks(_landmarks,found);
     /*
 
     keyPoints keyPointsFound, keyPointsNotFound;

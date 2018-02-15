@@ -244,32 +244,32 @@ src/slam.cpp.s:
 	$(MAKE) -f CMakeFiles/SLAM.dir/build.make CMakeFiles/SLAM.dir/src/slam.cpp.s
 .PHONY : src/slam.cpp.s
 
-src/visualization.o: src/visualization.cpp.o
+src/tracking.o: src/tracking.cpp.o
 
-.PHONY : src/visualization.o
+.PHONY : src/tracking.o
 
 # target to build an object file
-src/visualization.cpp.o:
-	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/visualization.cpp.o
-.PHONY : src/visualization.cpp.o
+src/tracking.cpp.o:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/tracking.cpp.o
+.PHONY : src/tracking.cpp.o
 
-src/visualization.i: src/visualization.cpp.i
+src/tracking.i: src/tracking.cpp.i
 
-.PHONY : src/visualization.i
+.PHONY : src/tracking.i
 
 # target to preprocess a source file
-src/visualization.cpp.i:
-	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/visualization.cpp.i
-.PHONY : src/visualization.cpp.i
+src/tracking.cpp.i:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/tracking.cpp.i
+.PHONY : src/tracking.cpp.i
 
-src/visualization.s: src/visualization.cpp.s
+src/tracking.s: src/tracking.cpp.s
 
-.PHONY : src/visualization.s
+.PHONY : src/tracking.s
 
 # target to generate assembly for a file
-src/visualization.cpp.s:
-	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/visualization.cpp.s
-.PHONY : src/visualization.cpp.s
+src/tracking.cpp.s:
+	$(MAKE) -f CMakeFiles/slam_libs.dir/build.make CMakeFiles/slam_libs.dir/src/tracking.cpp.s
+.PHONY : src/tracking.cpp.s
 
 thirdparty/tum_reader/src/FOVUndistorter.o: thirdparty/tum_reader/src/FOVUndistorter.cpp.o
 
@@ -347,9 +347,9 @@ help:
 	@echo "... src/slam.o"
 	@echo "... src/slam.i"
 	@echo "... src/slam.s"
-	@echo "... src/visualization.o"
-	@echo "... src/visualization.i"
-	@echo "... src/visualization.s"
+	@echo "... src/tracking.o"
+	@echo "... src/tracking.i"
+	@echo "... src/tracking.s"
 	@echo "... thirdparty/tum_reader/src/FOVUndistorter.o"
 	@echo "... thirdparty/tum_reader/src/FOVUndistorter.i"
 	@echo "... thirdparty/tum_reader/src/FOVUndistorter.s"

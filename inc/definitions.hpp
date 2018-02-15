@@ -7,11 +7,14 @@
 #include <vector>
 
 #include "Landmark.hpp"
+using namespace std;
+using namespace cv;
 
-#define print(x) std::cout << x << std::endl
+#define print(x) cout << x << endl
 
-typedef std::vector< cv::KeyPoint> keyPoints;
-typedef std::vector< Landmark > landmarks;
+typedef vector< KeyPoint> KeyPoints;
+typedef vector< Landmark > Landmarks;
+typedef vector< DMatch > Matches;
 //std::vector<int> matches;
 
 
