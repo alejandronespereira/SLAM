@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-
+#include <ctime>
 
 #include "opencv2/opencv.hpp"
 #include "frameProvider.hpp"
@@ -15,17 +15,18 @@
 #include "tracking.hpp"
 
 using namespace cv;
+using namespace std;
 
 int main( int argc, char** argv )
 {
   setlocale(LC_ALL, "C");
-  std::string dataset = argv[1];
+  string dataset = argv[1];
 
   Ptr<ORB> orb = ORB::create();
   orb->setMaxFeatures(500);
   Ptr<SURF> surf = SURF::create();
   Ptr<AKAZE> akaze = AKAZE::create();
-  FrameProvider* provider = new FrameProvider(dataset,akaze);
+  FrameProvider* provider = new FrameProvider(dataset,orb);
   FrameData frame1, frame2;
 
   //Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create("BruteForce");
@@ -34,14 +35,32 @@ int main( int argc, char** argv )
   //FlannBasedMatcher* matcher;
   //Ptr<DescriptorMatcher> BF = DescriptorMatcher::create("BruteForce-Hamming");
   BFMatcher* BF = new BFMatcher(NORM_L2,true);
-  Ptr<DescriptorMatcher> FLANN = DescriptorMatcher::create("FlannBased");
+  //Ptr<DescriptorMatcher> FLANN = DescriptorMatcher::create("FlannBased");
+
+  flann::LshIndexParams* params = new flann::LshIndexParams(20, 10, 2);
+  FlannBasedMatcher* FLANN = new FlannBasedMatcher(params);
+
   LandmarksManager* landmarksManager = new LandmarksManager(BF);
   Tracking* tracking = new Tracking(BF);
 
-  cv::Mat positionMap(Size(500,500),CV_8U);
+  Mat positionMap;
+  positionMap = Mat::zeros(Size(500,500),CV_8UC3);
 
-  double posX = 250.0;
-  double posY = 250.0;
+  double posX_xz = 250.0;
+  double posY_xz = 250.0;
+
+  double posX_xy = 250.0;
+  double posY_xy = 250.0;
+
+  double posX_yz = 250.0;
+  double posY_yz = 250.0;
+
+  Vec3b colorXZ = Vec3b(255,0,0);
+  Vec3b colorXY = Vec3b(0,255,0);
+  Vec3b colorYZ = Vec3b(0,0,255);
+  clock_t begin = clock();
+  clock_t end;
+  double elapsed_secs;
 
   for (int i = 0; i < provider->nImages; i ++)
   {
@@ -61,16 +80,41 @@ int main( int argc, char** argv )
       float tz = t.at<double>(2);
 
       //print("("<< tx << "," << ty << "," << ty << ")");
-      posX += tx;
-      posY += tz;
+      /*posX_xz += tx;
+      posY_xz += tz;
+
+      posX_xy += tx;
+      posY_xy += ty;
+
+      posX_yz += ty;
+      posY_yz += tz;
+      */
+    }
+    /*
+    positionMap.at<Vec3b>(Point(int(posX_xz),int(posY_xz))) = colorXZ;
+    positionMap.at<Vec3b>(Point(int(posX_xy),int(posY_xy))) = colorXY;
+    positionMap.at<Vec3b>(Point(int(posX_yz),int(posY_yz))) = colorYZ;
+
+    */
+    if(i%10 == 0 && i != 0)
+    {
+      end = clock();
+      elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+      begin = clock();
+      print("FPS:" << elapsed_secs / 10);
     }
 
-    //positionMap.at<int>(int(posX),int(posY)) = 255;
-    imshow("Map",positionMap);
-    waitKey(1);
+    /*
+
+    if (i%100 == 0)
+    {
+      print(i << "/" << provider->nImages);
+      imshow("Map",positionMap);
+      waitKey(1);
+    }*/
 
     //landmarksManager->createNewLandmarks(i,frame,_landmarks);
-    //std::vector < int > found, notFound;
+    //vector < int > found, notFound;
     //notFound = landmarksManager->compareLandmarks(_landmarks,found);
     /*
 
@@ -96,6 +140,7 @@ int main( int argc, char** argv )
     imshow("image",_display);
     waitKey(1);*/
   }
+  waitKey(0);
 }
 
 /*
